@@ -13,12 +13,6 @@ after_bundler do
     app/assets/images/rails.png
   }.each { |file| remove_file file }
 
-  # add placeholder READMEs
-  get "https://raw.github.com/RailsApps/rails3-application-templates/master/files/sample_readme.txt", "README"
-  get "https://raw.github.com/RailsApps/rails3-application-templates/master/files/sample_readme.textile", "README.textile"
-  gsub_file "README", /App_Name/, "#{app_name.humanize.titleize}"
-  gsub_file "README.textile", /App_Name/, "#{app_name.humanize.titleize}"
-
   # remove commented lines and multiple blank lines from Gemfile
   # thanks to https://github.com/perfectline/template-bucket/blob/master/cleanup.rb
   gsub_file 'Gemfile', /#.*\n/, "\n"
